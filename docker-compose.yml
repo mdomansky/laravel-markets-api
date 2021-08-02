@@ -1,0 +1,80 @@
+version: '3.5'
+
+networks:
+    app_network:
+        driver: bridge
+
+volumes:
+    mysql_data:
+        driver: local
+    vendor_data:
+        driver: local
+    redis_data:
+        driver: local
+
+services:
+    app:
+        container_name: lavarel-markets-api
+        build:
+            context: .
+            dockerfile: .docker/Dockerfile
+        depends_on:
+            - database
+            - redis
+            - mongo
+        tty: true
+        networks:
+            - app_network
+        env_file:
+            - .env
+        environment:
+            SERVICE_NAME: app
+            APP_ENV: local
+        #            DATABASE_HOST: ${DB_HOST}
+        #            DATABASE_PORT: ${DB_PORT}
+        #            DATABASE_NAME: ${DB_DATABASE}
+        #            DATABASE_USERNAME: ${DB_USERNAME}
+        #            DATABASE_PASSWORD: ${DB_PASSWORD}
+        ports:
+            - 8000:8000
+
+    database:
+        container_name: database
+        image: mysql:latest
+        tty: true
+        networks:
+            - app_network
+        environment:
+            SERVICE_NAME: database
+            MYSQL_DATABASE: ${DB_DATABASE}
+            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+        ports:
+            - 3306:3306
+
+    mongo:
+        container_name: mongo
+        image: mongo:latest
+        tty: true
+        networks:
+            - app_network
+        environment:
+            MONGO_INITDB_DATABASE: ${DB_MONGO_DATABASE}
+            MONGO_INITDB_ROOT_USERNAME: ${DB_MONGO_USERNAME}
+            MONGO_INITDB_ROOT_PASSWORD: ${DB_MONGO_PASSWORD}
+        ports:
+            - 27017:27017
+
+    redis:
+        image: redis:6.2-alpine
+        container_name: redis
+        restart: unless-stopped
+        tty: true
+        networks:
+            - app_network
+        ports:
+            - 6379:6379
+        healthcheck:
+            test: [ "CMD", "redis-cli", "ping" ]
+            interval: 1s
+            timeout: 3s
+            retries: 30
