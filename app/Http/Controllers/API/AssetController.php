@@ -9,6 +9,6 @@ class AssetController extends Controller
 {
     public function index()
     {
-        return '1222223';
+        return [];
     }
 }

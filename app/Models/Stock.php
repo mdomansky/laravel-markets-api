@@ -2,10 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Relations\AssetRelation;
 use Illuminate\Database\Eloquent\Model;
 
-class Stock extends Model
+class Stock extends Asset
 {
-    use HasFactory;
+    use AssetRelation;
+
+    protected $fillable = [
+        'asset_id',
+        'type',
+    ];
+
 }

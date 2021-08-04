@@ -2,16 +2,17 @@
 
 namespace App\Console\Commands;
 
+use App\Services\Markets\ImportAssetsInterface;
 use Illuminate\Console\Command;
 
-class GetAllAssets extends Command
+class ImportAllAssets extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'data:get-all-assets';
+    protected $signature = 'data:import-all-assets';
 
     /**
      * The console command description.
@@ -20,13 +21,16 @@ class GetAllAssets extends Command
      */
     protected $description = 'The command retrieves all data from all markets. For each asset it gets prices for the whole period. If data is exists - skip.';
 
+    private $importAssetsService;
+
     /**
      * Create a new command instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(ImportAssetsInterface $importAssetsService)
     {
+        $this->importAssetsService = $importAssetsService;
         parent::__construct();
     }
 
@@ -37,6 +41,10 @@ class GetAllAssets extends Command
      */
     public function handle()
     {
-        return 0;
+        $this->info('Assets import has been started');
+
+        $this->importAssetsService->importAssets();
+
+        $this->info('Assets has been imported');
     }
 }

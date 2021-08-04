@@ -2,10 +2,19 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Relations\AssetRelation;
 use Illuminate\Database\Eloquent\Model;
 
-class Etf extends Model
+class Etf extends Asset
 {
-    use HasFactory;
+    use AssetRelation;
+
+    protected $fillable = [
+        'asset_id',
+        'service_company',
+        'commission',
+        'follow_index',
+        'birth_country_id',
+    ];
+
 }

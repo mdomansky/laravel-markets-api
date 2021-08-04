@@ -58,9 +58,8 @@ class CreateAssetsTables extends Migration
             $table->unsignedBigInteger('asset_id')->unique();
             $table->foreign('asset_id')->on('assets')->references('id')->cascadeOnDelete();
 
-            $table->string('type');
+            $table->string('type')->nullable();
 
-            $table->softDeletes();
             $table->timestamps();
         });
 
@@ -69,11 +68,10 @@ class CreateAssetsTables extends Migration
             $table->unsignedBigInteger('asset_id')->unique();
             $table->foreign('asset_id')->on('assets')->references('id')->cascadeOnDelete();
 
-            $table->date('utility_at');
-            $table->double('sum');
-            $table->integer('payments_per_year');
+            $table->date('utility_at')->nullable();
+            $table->double('sum')->nullable();
+            $table->integer('payments_per_year')->nullable();
 
-            $table->softDeletes();
             $table->timestamps();
         });
 
@@ -83,12 +81,11 @@ class CreateAssetsTables extends Migration
             $table->foreign('asset_id')->on('assets')->references('id')->cascadeOnDelete();
 
             $table->string('service_company')->nullable();
-            $table->double('commission')->default(0);
+            $table->double('commission')->nullable();
             $table->string('follow_index')->nullable();
             $table->unsignedBigInteger('birth_country_id')->nullable();
             $table->foreign('birth_country_id')->on('countries')->references('id');
 
-            $table->softDeletes();
             $table->timestamps();
         });
     }
