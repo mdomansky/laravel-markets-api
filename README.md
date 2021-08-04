@@ -26,7 +26,7 @@ Have a look at **Swagger documentation** {{server}}/api/documentation and next e
 ### Dependency Injection (DI), services, repositories
 Have a look at:
 * app/Http/Controllers/API/AssetController
-* app/Services/Markets/MOEX/ImportAssets.php
+* app/Services/Markets/MOEX/ImportAssets
 
 ### Interfaces/Contracts
 

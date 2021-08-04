@@ -5,17 +5,12 @@ namespace App\Services\Markets\MOEX;
 
 
 use App\Repositories\CurrencyRepository;
-use App\Repositories\StockRepository;
 
-class ImportStocks
+class ImportStockPrices
 {
     private StockRepository $stockRepository;
     private CurrencyRepository $currencyRepository;
     private string $moexStocksUrl = 'https://iss.moex.com/iss/engines/stock/markets/shares/boards/TQBR/securities.xml';
-    private $types = [
-        1 => 'general',
-        2 => 'privileges',
-    ];
 
     public function __construct(StockRepository $stockRepository, CurrencyRepository $currencyRepository)
     {
@@ -23,7 +18,7 @@ class ImportStocks
         $this->currencyRepository = $currencyRepository;
     }
 
-    public function import(): void
+    public function importStockPrices(): void
     {
         $xmlDataString = file_get_contents($this->moexStocksUrl);
         $xmlObject = simplexml_load_string($xmlDataString);
@@ -40,7 +35,6 @@ class ImportStocks
                     'currency_id' => $this->currencyRepository->getCurrencyIdByCode($stock['CURRENCYID']),
                     'isin' => $stock['ISIN'],
                     'papers_in_lot' => $stock['LOTSIZE'],
-                    'type' => $this->types[$stock['SECTYPE']] ?? $this->types[1],
                 ]
             )->refresh();
         }

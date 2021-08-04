@@ -11,9 +11,9 @@ class ImportAssets implements ImportAssetsInterface
 {
     public function importAssets(): void
     {
-        app(ImportStocks::class)->importStocksList();
-        app(ImportEtfs::class)->importStocksList();
-        app(ImportBonds::class)->importStocksList();
+        app(ImportStocks::class)->import();
+        app(ImportBonds::class)->import();
+        app(ImportEtfs::class)->import();
     }
 
     public function importAssetPrices($asset, Carbon $from, Carbon $to = null): void

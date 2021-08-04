@@ -22,7 +22,7 @@ class ImportBonds
         $this->currencyRepository = $currencyRepository;
     }
 
-    public function importStocksList(): void
+    public function import(): void
     {
         foreach ($this->moexBondsUrls as $url) {
             $xmlDataString = file_get_contents($url);

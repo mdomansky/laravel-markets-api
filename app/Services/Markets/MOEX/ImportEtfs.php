@@ -19,7 +19,7 @@ class ImportEtfs
         $this->currencyRepository = $currencyRepository;
     }
 
-    public function importStocksList(): void
+    public function import(): void
     {
         $xmlDataString = file_get_contents($this->moexEtfsUrl);
         $xmlObject = simplexml_load_string($xmlDataString);

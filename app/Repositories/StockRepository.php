@@ -6,7 +6,7 @@ namespace App\Repositories;
 
 use App\Models\Stock;
 
-class BondRepository extends AssetRepository
+class StockRepository extends AssetRepository
 {
     public function findByTickerOrCreate(string $ticker, array $attributes): Stock
     {
