@@ -1,9 +1,9 @@
 ## Microservice laravel-markets-api 
 
-**Laravel 8** Microservice that copies list of assets from different markets, store it in **MySQL**. Also gathers assets' prices and store it in **MongoDB**. There is a **Redis** for fast sorting by popular assets.
+**Laravel 8** microservice that imports a list of assets from different markets, store them in **MySQL**. Also gathers assets' prices and store them in **MongoDB**. There is a **Redis** for fast sorting by popular assets.
 As an example, it works with MOEX market, but has developed contracts to integrate other markets. 
 
-API was implemented following **RESTful API** standard.
+The microservice follows **RESTful API** standard.
 
 ## Install (run commands in console)
 - `git clone`
