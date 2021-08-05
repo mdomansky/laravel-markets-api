@@ -13,39 +13,38 @@ The microservice follows **RESTful API** standard.
 - `docker-compose exec app sh`
 - `php artisan migrate`
 - `php artisan data:import-all-assets`
+- `php artisan data:import-assets-prices`
 - `exit`
 
 ## How to use microservice
-Have a look at **Swagger documentation** {{server}}/api/documentation and next examples below:
-- GET: {{server}}/api/stocks
-- GET: {{server}}/api/bonds/popular
-- GET: {{server}}/api/etfs/FXUS
+Have a look at **Postman collection** (postman_collection.json) or **Swagger documentation** ({{server}}/api/documentation) or next examples below:
+- GET: {{server}}/api/assets
+- GET: {{server}}/api/stocks/popular
+- GET: {{server}}/api/stocks/{ticker} for example you can use SBER, ALRS, GAZP
 
 ## Some technical skills
 
 ### Dependency Injection (DI), services, repositories
 Have a look at:
-* app/Http/Controllers/API/AssetController
 * app/Services/Markets/MOEX/ImportAssets
+* app/Http/Controllers/API/StockController
+* app/Services/StockService
 
 ### Interfaces/Contracts
 
 Have a look at:
-* app/Services/Markets/
+* app/Services/Markets/ImportAssetsInterface and folder app/Services/Markets/
+* Service Provider file: app/Providers/MarketServiceProvider
 
 ### Redis use
 
 Have a look at:
-* app/Http/Controllers/API/AssetController
-* app/Http/Controllers/API/StockController
-* app/Http/Controllers/API/BondController
-* app/Http/Controllers/API/EtfController
+* app/Repositories/StockRepository
 
 ### MongoDB use
 
-Have a look at:
-* app/Http/Controllers/API/StockController
-* app/Http/Controllers/API/BondController
-* app/Http/Controllers/API/EtfController
+Jenssegers/mongodb package is used for Laravel integration. Have a look at:
+* database/migrations/2021_08_04_145759_create_prices_mongodb_collection
+* app/Models/Price
 
     

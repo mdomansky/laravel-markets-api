@@ -1,0 +1,39 @@
+{
+    "info": {
+        "_postman_id": "93ad91d0-b075-452f-8107-d8a71e0b0814",
+        "name": "laravel-markets-api",
+        "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Assets List",
+            "id": "d9cb7883-a63d-411c-b2f2-cf4868344a9c",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": "{{server}}/api/assets"
+            },
+            "response": []
+        },
+        {
+            "name": "Popular stocks",
+            "id": "9b408467-7a7b-4b59-acb0-3916d72fc8e4",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": "{{server}}/api/stocks/popular"
+            },
+            "response": []
+        },
+        {
+            "name": "Show Stock",
+            "id": "3a84e195-6564-4b2e-ad7e-958f4b777dfd",
+            "request": {
+                "method": "GET",
+                "header": [],
+                "url": "{{server}}/api/stocks/SBER"
+            },
+            "response": []
+        }
+    ]
+}

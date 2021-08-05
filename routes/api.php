@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\AssetController;
+use App\Http\Controllers\API\StockController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -16,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('assets', [AssetController::class, 'index']);
+
+Route::get('stocks/popular', [StockController::class, 'popular']);
+Route::get('stocks/{ticker}', [StockController::class, 'show']);

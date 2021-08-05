@@ -11,12 +11,12 @@ class AssetRepository
 {
     public function all(): Collection
     {
-        return Asset::all();
+        return Asset::with(['stock', 'bond', 'etf'])->get();
     }
 
-    public function findByTicker(string $ticker)
+    public function findByTicker(string $ticker, array $with = [])
     {
-        return Asset::where('ticker', $ticker)->firstOrFail();
+        return Asset::where('ticker', $ticker)->with($with)->firstOrFail();
     }
 
     public function findByModelAndTickerOrCreate($model, string $ticker, array $attributes)

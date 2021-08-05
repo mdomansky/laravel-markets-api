@@ -58,17 +58,17 @@ class Asset extends Model
         return false;
     }
 
-    protected function stock()
+    public function stock()
     {
         return $this->hasOne(Stock::class);
     }
 
-    protected function bond()
+    public function bond()
     {
         return $this->hasOne(Bond::class);
     }
 
-    protected function etf()
+    public function etf()
     {
         return $this->hasOne(Etf::class);
     }
