@@ -17,15 +17,22 @@ class AssetController extends Controller
     }
 
 
+    /**
+     * @OA\Get(
+     *     path="/api/assets",
+     *     summary="Returns all assets",
+     *     description="",
+     *     tags={"Assets"},
+     *     @OA\Response(
+     *         response=200,
+     *         description="Returns JSON array of assets",
+     *     ),
+     * )
+     */
     public function index(): JsonResponse
     {
-        $assets = $this->assetRepository->all();
+        $assets = $this->assetRepository->all(['stock', 'bond', 'etf']);
 
         return response()->json($assets);
-    }
-
-    public function popular()
-    {
-
     }
 }

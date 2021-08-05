@@ -9,12 +9,12 @@ use Illuminate\Database\Eloquent\Collection;
 
 class AssetRepository
 {
-    public function all(): Collection
+    public function all(array $with = []): Collection
     {
-        return Asset::with(['stock', 'bond', 'etf'])->get();
+        return Asset::with($with)->get();
     }
 
-    public function findByTicker(string $ticker, array $with = [])
+    public function findByTicker(string $ticker, array $with = []): Asset
     {
         return Asset::where('ticker', $ticker)->with($with)->firstOrFail();
     }

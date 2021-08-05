@@ -20,12 +20,10 @@ class StockRepository extends AssetRepository
         Redis::zincrby('trending_stocks', 1, $stock);
     }
 
-    public function getPopularStocks(int $limit = 5)
+    public function getPopularStocks(int $limit = 5): array
     {
         $stocksFromRedis = Redis::zrevrange('trending_stocks', 0, $limit - 1);
 
-        $stocks = array_map('json_decode', $stocksFromRedis);
-
-        return $stocks;
+        return array_map('json_decode', $stocksFromRedis);
     }
 }

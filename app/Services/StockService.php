@@ -5,7 +5,6 @@ namespace App\Services;
 
 
 use App\Repositories\StockRepository;
-use Illuminate\Support\Facades\Redis;
 
 class StockService
 {
@@ -24,7 +23,7 @@ class StockService
         return $stock;
     }
 
-    public function getPopularStocks($limit = 5)
+    public function getPopularStocks($limit = 5): array
     {
         return $this->stockRepository->getPopularStocks($limit);
     }

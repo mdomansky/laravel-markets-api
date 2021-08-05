@@ -1,0 +1,79 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Laravel Markets API Documentation",
+        "description": "Some endpoints just to show how it works and how you should use it",
+        "contact": {
+            "email": "mx.mixer@gmail.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8000",
+            "description": "Dev local API server"
+        }
+    ],
+    "paths": {
+        "/api/assets": {
+            "get": {
+                "tags": [
+                    "Assets"
+                ],
+                "summary": "Returns all assets",
+                "description": "",
+                "operationId": "e8659c84f8cf646e549dec780a298d9d",
+                "responses": {
+                    "200": {
+                        "description": "Returns JSON array of assets"
+                    }
+                }
+            }
+        },
+        "/api/stocks/{ticker}": {
+            "get": {
+                "tags": [
+                    "Stocks"
+                ],
+                "summary": "Returns stock data",
+                "description": "",
+                "operationId": "07b079c830f71d6d2d4f4bc96717d99c",
+                "parameters": [
+                    {
+                        "name": "ticker",
+                        "in": "path",
+                        "description": "Ticker name",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        },
+                        "example": "SBER"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Returns JSON data of the stock"
+                    }
+                }
+            }
+        },
+        "/api/stocks/popular": {
+            "get": {
+                "tags": [
+                    "Stocks"
+                ],
+                "summary": "Returns 10 most popular stocks",
+                "description": "",
+                "operationId": "d44efe4ee1f3291dcc3a23fa98ec9aa2",
+                "responses": {
+                    "200": {
+                        "description": "Returns JSON array of stocks"
+                    }
+                }
+            }
+        }
+    },
+    "security": [
+        []
+    ]
+}
