@@ -9,6 +9,6 @@ interface ImportAssetsInterface
 {
     public function importAssets(): void;
 
-    public function importAssetPrices($asset, Carbon $from, Carbon $to = null): void;
+    public function importAssetPrices(string $ticker, Carbon $from, Carbon $to = null): void;
 
 }

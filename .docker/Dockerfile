@@ -8,7 +8,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 	&& apk add --no-cache git \
 	&& apk add --update busybox-suid supervisor autoconf \
 	&& chown -R 1000:1000 /app
-RUN apk --update add bash gcc make g++ zlib-dev \
+RUN apk --update add bash gcc make g++ zlib-dev curl-dev openssl-dev \
     && /bin/bash -lc "pecl install mongodb" \
     && docker-php-ext-enable mongodb
 RUN chmod 777 -R /app/storage
