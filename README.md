@@ -5,6 +5,8 @@ As an example, it works with MOEX market, but has developed contracts to integra
 
 The microservice follows **RESTful API** standard.
 
+Please check **Postman collection** and **Swagger documentation**.
+
 ## Install (run commands in console)
 - `git clone`
 - `composer install`
@@ -17,7 +19,9 @@ The microservice follows **RESTful API** standard.
 - `exit`
 
 ## How to use microservice
-Have a look at **Postman collection** (postman_collection.json) or **Swagger documentation** ({{server}}/api/documentation) or next examples below:
+Have a look at: 
+- Import Postman collection file postman_collection.json
+- Open in browser {{server}}/api/documentation
 - GET: {{server}}/api/assets
 - GET: {{server}}/api/stocks/popular
 - GET: {{server}}/api/stocks/{ticker} for example you can use SBER, ALRS, GAZP
